@@ -1,8 +1,14 @@
+@use '../util';
+
 .hero{
     height: 100%;
     background-color: var(--white);
     position: relative;
     overflow: hidden;
+
+    @include util.breakpoint-down(large){
+        overflow:visible;
+    }
   
     
     &::before{
@@ -12,11 +18,17 @@
         background-repeat: no-repeat;
         background-size: 40em;
 
+        
+
         top:0;
         left:0;
 
         width: 100%;
         height: 100%;
+
+        @include util.breakpoint-down(large){
+            background-image: url("../../../images/bg-pattern-top-mobile.svg");
+        }
     }
 
     &::after{
@@ -33,18 +45,39 @@
 
         width: 100%;
         height: 100%;
+
+        @include util.breakpoint-down(large){
+            background-image: url("../../../images/bg-pattern-bottom-mobile.svg");
+            background-position: 100% 200%;
+            background-size: 20em;
+        }
     }
 
     &__container{
         padding:5rem 10rem;
         display: flex;
         flex-direction: column;
+        
 
         .startup {
             display: flex;
             margin-bottom: 4rem;
+        
+           
+            
+
+            @include util.breakpoint-down(large){
+                 flex-direction: column;
+                 align-items: center;
+                 justify-content: center;
+                 text-align: center;
+            }
 
             &__info{
+                @include util.breakpoint-down(large){
+                    margin-bottom: 2rem;
+               }
+
                 .title{
                     h2{
                         color: var(--very-dark-magenta);
@@ -69,6 +102,8 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+                width: 100%;
+            
 
                 .testimonial{
                     background: var(--light-grayish-magenta);
@@ -78,32 +113,60 @@
                     padding: 1rem 4rem 1rem 1rem;
                     border-radius: 10px;
                     z-index: 999;
+                    
+
+                    @include util.breakpoint-down(large){
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        padding:1rem 0;
+                        width:30em;
+                   }
 
                     .stars{
                         display: flex;
                         align-items: center;
 
+                        @include util.breakpoint-down(large){
+                            margin-bottom: 0.5rem;
+                       }
+
+
+
                         img:not(:last-child) {
                             padding-right: 0.4rem;
+
+                            @include util.breakpoint-down(large){
+                                padding-right: 0.6rem;
+                            }
                         }
                     }
 
                     .text{
                         margin-left: 2rem;
                         margin-top: 0.2rem;
+                        white-space: nowrap;
+
+                        @include util.breakpoint-down(large){
+                            margin:0;
+                        }
                     }
 
-                    &:nth-child(1){
-                        margin-left: -3rem;
+                    @include util.breakpoint-up(large){
+                        &:nth-child(1){
+                            margin-left: -3rem;
+                        }
+    
+                        &:nth-child(2){
+                            margin-left: 3rem;
+                        }
+    
+                        &:nth-child(3){
+                            margin-left: 10rem;
+                        }
                     }
 
-                    &:nth-child(2){
-                        margin-left: 3rem;
-                    }
-
-                    &:nth-child(3){
-                        margin-left: 10rem;
-                    }
+                    
                 }
             }
 
@@ -111,16 +174,31 @@
 
         .cards{
             display: flex;
+            
+            @include util.breakpoint-down(large){
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
 
             .card{
                 background: var(--very-dark-magenta);
                 border-radius: 10px;
                 height: 15em;
 
+                @include util.breakpoint-down(large){
+                    height: 18em;
+                    width:30em;
+                    margin-bottom: 2rem;
+                }
+
                 .profile{
                     display: flex;
                     padding: 2rem;
                     align-items: center;
+
+                   
                     img{
                         margin-right: 1rem;
                         border-radius: 50%;
@@ -149,24 +227,20 @@
                    
                 }
             }
-            
 
-            .card:not(:last-child){
-                margin-right: 2rem;
-            }
-
-            .card:nth-child(2){
-                margin-top: 1rem;
-            }
-
-            .card:nth-child(3){
-                margin-top: 2rem;
-            }
+            @include util.breakpoint-up(large){
+                .card:not(:last-child){
+                    margin-right: 2rem;
+                }
+    
+                .card:nth-child(2){
+                    margin-top: 1rem;
+                }
+    
+                .card:nth-child(3){
+                    margin-top: 2rem;
+                }
+            }    
         }
-
-        
     }
-
-
-   
 }
